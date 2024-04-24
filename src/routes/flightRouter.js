@@ -4,9 +4,6 @@ const flightController = require('../controllers/flightController');
 const router = express.Router();
 
 router.get('/flights', flightController.getAllFlights);
-// router.get('/getOrders/:username', orderController.getOrdersByUsername);
-// router.get('/getAllOrders', orderController.getAllOrders);
-// router.post('/deleteOrder/:orderId', orderController.deleteOrder);
-// router.post('/updateOrder/:orderId',orderController.updateOrder);
+router.get('/flights/:flightNumber', flightController.getFlightByFlightNumber);
 
 module.exports = router;

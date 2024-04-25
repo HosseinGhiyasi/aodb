@@ -108,7 +108,6 @@ const flightController = {
             const departureCity = req.query.departureCity; 
             const destinationCity = req.query.destinationCity; 
             const departureTime = req.query.departureTime;
-            // const arrivalTime = req.query.arrivalTime;
             if (!departureCity || !destinationCity || !departureTime) {
                 return res.status(400).json({ error: 'Neccessary data should be filled' });
             }

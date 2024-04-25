@@ -1,4 +1,3 @@
-// ticketController.js
 const ticketModel = require('../models/ticketModel');
 
 const ticketController = {

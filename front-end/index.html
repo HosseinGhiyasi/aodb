@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <ul>
+          <li>
+            <button class="sidebar-button active-page">
+              <img src="/icons/flight.svg" alt="Flight Icon" /> Flight
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-button">
+              <img src="/icons/airport.svg" alt="Airport Icon" /> Airport
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-button">
+              <img src="/icons/aircraft.svg" alt="Aircraft Icon" /> Aircraft
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-button">
+              <img src="/icons/crew.svg" alt="Crew Icon" /> Crew
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-button">
+              <img src="/icons/maintenance.svg" alt="MaintenanceLog Icon" />
+              MaintenanceLog
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-button">
+              <img src="/icons/ticket.svg" alt="Ticket Icon" /> Ticket
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-button">
+              <img src="/icons/passenger.svg" alt="Passenger Icon" /> Passenger
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-button">
+              <img src="/icons/baggage.svg" alt="Baggage Icon" /> Baggage
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="content-box">
+          <div class="function-box">
+            <div class="function-row">
+              <div class="function">
+                <div class="search-container">
+                  <input
+                    type="text"
+                    placeholder="Get all flights by destination city"
+                  />
+                  <button type="button">Search</button>
+                </div>
+              </div>
+              <div class="function">
+                <div class="search-container">
+                  <input type="text" placeholder="Get ticket count by Flight" />
+                  <button type="button">Search</button>
+                </div>
+              </div>
+              <div class="function">
+                <div class="search-container">
+                  <input type="text" placeholder="Get crew by Flight" />
+                  <button type="button">Search</button>
+                </div>
+              </div>
+            </div>
+            <div class="function-row">
+              <div class="function">
+                <div class="search-container">
+                  <input
+                    type="text"
+                    placeholder="Get all passenger by flight"
+                  />
+                  <button type="button">Search</button>
+                </div>
+              </div>
+              <div class="function">
+                <div id="search-by-number" class="search-container">
+                  <input
+                    type="text"
+                    placeholder="Search flight by flight number"
+                  />
+                  <button type="button">Search</button>
+                </div>
+              </div>
+              <div class="function"></div>
+            </div>
+            <div class="function-row">
+              <div class="function">
+                <button
+                  class="button-full"
+                  type="button"
+                  onclick="toggleGetFlightByDate()"
+                >
+                  Get flight by date
+                </button>
+              </div>
+              <div class="function">
+                <button type="button" class="add-flight-btn button-full">Add flight</button>
+              </div>
+              <div class="function"></div>
+            </div>
+          </div>
+          <div class="table-box">
+            <div class="table-container">
+              <table class="striped-table">
+                <thead>
+                  <tr>
+                    <th>FlightNumber</th>
+                    <th>DestinationAirportCode</th>
+                    <th>DepartureTime</th>
+                    <th>ArrivalTime</th>
+                    <th>AircraftID</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                    <td>Data 5</td>
+                    <td>Data 6</td>
+                    <td>
+                      <button
+                        class="update-button"
+                        onclick="toggleUpdateFlight()"
+                      >
+                        Update
+                      </button>
+                      <button
+                        class="delete-button"
+                        onclick="deleteFlight(this)"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Add Flight form -->
+    <form name="add-flight" id="addFlightModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Add Flight</h3>
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              name="FlightNumber"
+              type="text"
+              placeholder="Enter FlightNumber"
+              id="get-FlightNumber"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              name="DestinationAirportCode"
+              type="text"
+              placeholder="Enter DestinationAirportCode"
+              id="get-DestinationAirportCode"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              name="DepartureTime"
+              type="text"
+              placeholder="Enter DepartureTime"
+              id="get-DepartureTime"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              type="text"
+              placeholder="Enter ArrivalTime"
+              name="ArrivalTime"
+              id="get-ArrivalTime"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              type="text"
+              name="AircraftID"
+              placeholder="Enter AircraftID"
+              id="get-AircraftID"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              type="text"
+              name="Status"
+              placeholder="Enter Status"
+              id="get-Status"
+            />
+          </div>
+        </div>
+        <div class="function">
+          <div class="modal-c">
+            <button type="submit" id="add-button">Add</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div id="GetFlightByDate" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeGetFlightByDate()">&times;</span>
+        <h3>Get flight by date</h3>
+        <!-- <input type="date" placeholder="enter date"> -->
+        <div class="function">
+          <div class="search-container">
+            <input type="text" placeholder="Enter day" />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input type="text" placeholder="Enter month" />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input type="text" placeholder="Enter year" />
+          </div>
+        </div>
+        <div class="function">
+          <div class="modal-c">
+            <button type="button">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form name="update-flight" id="UpdateFlight" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Add Flight</h3>
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              type="text"
+              name="FlightNumber"
+              placeholder="Enter FlightNumber"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              type="text"
+              name="DestinationAirportCode"
+              placeholder="Enter DestinationAirportCode"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              type="text"
+              name="DepartureTime"
+              placeholder="Enter DepartureTime"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              type="text"
+              name="ArrivalTime"
+              placeholder="Enter ArrivalTime"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              type="text"
+              name="AircraftID"
+              placeholder="Enter AircraftID"
+            />
+          </div>
+        </div>
+        <hr class="line-h" />
+        <div class="function">
+          <div class="search-container">
+            <input
+              required
+              type="text"
+              name="Status"
+              placeholder="Enter Status"
+            />
+          </div>
+        </div>
+        <div class="function">
+          <div class="modal-c">
+            <button type="submit">Add</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Backdrop for blurred background -->
+    <div id="modalBackdrop" class="backdrop"></div>
+
+    <script type="module" src="./main.js"></script>
+
+    <!-- ! refactor needed -->
+    <script>
+      // function toggleAddFlightForm() {
+      //   var modal = document.getElementById('addFlightModal');
+      //   var backdrop = document.getElementById('modalBackdrop');
+      //   modal.style.display = 'block';
+      //   backdrop.style.display = 'block';
+      // }
+
+      // function closeAddFlightForm() {
+      //   var modal = document.getElementById('addFlightModal');
+      //   var backdrop = document.getElementById('modalBackdrop');
+      //   modal.style.display = 'none';
+      //   backdrop.style.display = 'none';
+      // }
+
+      function toggleGetFlightByDate() {
+        var modal = document.getElementById('GetFlightByDate');
+        var backdrop = document.getElementById('modalBackdrop');
+        modal.style.display = 'block';
+        backdrop.style.display = 'block';
+      }
+
+      function closeGetFlightByDate() {
+        var modal = document.getElementById('GetFlightByDate');
+        var backdrop = document.getElementById('modalBackdrop');
+        modal.style.display = 'none';
+        backdrop.style.display = 'none';
+      }
+
+      // function toggleUpdateFlight() {
+      //   var modal = document.getElementById('UpdateFlight');
+      //   var backdrop = document.getElementById('modalBackdrop');
+      //   modal.style.display = 'block';
+      //   backdrop.style.display = 'block';
+      // }
+
+      // function closeUpdateFlight() {
+      //   var modal = document.getElementById('UpdateFlight');
+      //   var backdrop = document.getElementById('modalBackdrop');
+      //   modal.style.display = 'none';
+      //   backdrop.style.display = 'none';
+      // }
+    </script>
+  </body>
+</html>

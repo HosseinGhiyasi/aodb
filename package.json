@@ -4,6 +4,7 @@
   "description": "aodb",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon app.js",
     "serve": "node app.js"
   },
   "repository": {
@@ -24,5 +25,8 @@
     "mssql": "^10.0.2",
     "tedious": "^18.1.0",
     "tedious-connection-pool": "^1.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }

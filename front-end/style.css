@@ -1,0 +1,297 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #303030;
+  color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  border-left: 1px solid rgb(137, 137, 137);
+  background-color: #303030;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0px;
+}
+
+.sidebar li {
+  padding: 5px 5px 0px 5px;
+}
+
+.content-box {
+  background-color: #ffffff;
+  /* padding: 10px; */
+}
+
+.sidebar-button {
+  background-color: #444444;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  text-align: left;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgb(100, 100, 100);
+  /* margin-bottom: 10px; */
+}
+
+.sidebar-button img {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar-button:hover {
+  background-color: #303030;
+  border: 1px solid rgb(170, 170, 170);
+}
+
+.sidebar-button:focus {
+  outline: none;
+}
+
+.striped-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.striped-table th,
+.striped-table td {
+  border: 1px solid #e10000;
+  padding: 8px;
+}
+
+.striped-table tbody tr:nth-child(odd) {
+  background-color: #444444;
+}
+
+.striped-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.striped-table th,
+.striped-table td {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 8px;
+  color: #ffffff;
+}
+
+thead {
+  background-color: #101010;
+}
+
+.table-container {
+  background-color: #5b5b5b;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #303030;
+  /* padding-bottom: 40px; */
+}
+
+.search-container input {
+  padding: 10px;
+  width: 100%;
+  border-radius: 0px;
+  border: none;
+}
+
+.modal-c button {
+  width: 100%;
+  border-radius: 0px;
+  border: none;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #000000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background-color: #959595;
+  color: #303030;
+}
+
+.active-page {
+  border: 1px solid rgb(255, 255, 255);
+}
+
+td {
+  text-align: left;
+}
+
+.function {
+  flex: 1;
+  background-color: #303030;
+}
+
+.function-box {
+  background-color: #303030;
+  /* margin-bottom: 40px; */
+  border-bottom: 1px solid rgb(137, 137, 137);
+}
+
+.function-row {
+  display: flex;
+  background-color: #303030;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.button-full {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  background-color: #000000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button-full:hover {
+  background-color: #959595;
+  color: #303030;
+}
+
+/* .line {
+  border-color: red;
+  padding-bottom: 20px;
+  background-color: #303030;
+} */
+
+.table-box {
+  padding-top: 20px;
+  background-color: #303030;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+  backdrop-filter: blur(2px); /* Apply blur effect */
+  -webkit-backdrop-filter: blur(2px); /* For Safari */
+  display: none; /* Initially hidden */
+}
+
+.modal {
+  position: fixed;
+  z-index: 100;
+}
+
+.modal-content {
+  background-color: #444444;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%;
+  max-width: 500px;
+  position: relative;
+  margin: 10%auto;
+}
+
+.close {
+  color: #ffffff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.update-button,
+.delete-button {
+  width: calc(50% - 5px);
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.update-button {
+  background-color: rgba(255, 255, 255, 0.209);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.delete-button {
+  background-color: rgba(255, 80, 80, 0.209);
+  color: rgb(255, 80, 80);
+  border: 1px solid rgb(255, 80, 80);
+}
+
+/* Optional: Hover and Focus Styles */
+.update-button:hover,
+.delete-button:hover,
+.update-button:focus,
+.delete-button:focus {
+  opacity: 0.8;
+}
+
+h3 {
+  color: #ffffff;
+}
+
+.visible {
+  display: initial;
+}

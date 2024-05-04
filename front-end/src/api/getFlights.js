@@ -2,8 +2,12 @@
 import $fetch from '../utils/$fetch';
 
 const getFlights = async () => {
-  const data = await $fetch('/flights');
-  return data;
+  try {
+    const data = await $fetch('/flights');
+    return data;
+  } catch (err) {
+    alert('failed to fetch all flight at /flights')
+  }
 };
 
 export default getFlights;

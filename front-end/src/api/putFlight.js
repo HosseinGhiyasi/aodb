@@ -4,17 +4,23 @@ import { toggleModal } from '../utils';
 import { createFlight } from '../utils/create';
 
 const putFlight = async (flightNumber, updatedFlight) => {
-  const data = await $fetch(`/flights/${flightNumber}`, {
-    method: 'PUT',
-    body: JSON.stringify(updatedFlight),
-  });
-  const tableRow = document.getElementById(flightNumber);
-  const tableBody = tableRow.parentElement;
+  try {
+    const data = await $fetch(`/flights/${flightNumber}`, {
+      method: 'PUT',
+      body: JSON.stringify(updatedFlight),
+    });
+    const tableRow = document.getElementById(flightNumber);
+    const tableBody = tableRow.parentElement;
 
-  tableBody.replaceChild(createFlight(updatedFlight), tableRow);
-  toggleModal('UpdateFlight');
+    tableBody.replaceChild(createFlight(updatedFlight), tableRow);
+    toggleModal('UpdateFlight');
 
-  return data;
+    alert('flight was successfully updated');
+
+    return data;
+  } catch (err) {
+    alert('failed to update the flight');
+  }
 };
 
 export default putFlight;

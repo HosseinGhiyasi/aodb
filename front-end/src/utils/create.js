@@ -1,5 +1,6 @@
 // * api
 import deleteFlight from '../api/deleteFlight';
+import getFlightByFlightNo from '../api/getFlightByFlightNo';
 
 // * utils
 import { toggleModal } from '.';
@@ -28,8 +29,22 @@ export const createFlight = flight => {
   deleteBtn.innerText = 'Delete';
 
   deleteBtn.onclick = deleteFlight.bind(null, flight.FlightNumber);
-  updateBtn.onclick = toggleModal.bind(null, 'UpdateFlight', modal => {
+  updateBtn.onclick = toggleModal.bind(null, 'UpdateFlight', async modal => {
     modal.dataset.flightNumber = flight.FlightNumber;
+
+    if (!modal.classList.contains('visible')) return;
+
+    try {
+      const data = await getFlightByFlightNo(flight.FlightNumber);
+
+      for (const field in data) {
+        const inputField = modal.querySelector(`[name="${field}"]`);
+        if (!inputField) continue;
+        inputField.value = data[field];
+      }
+    } catch (err) {
+      console.error(err);
+    }
   });
 
   dataCells.push(
